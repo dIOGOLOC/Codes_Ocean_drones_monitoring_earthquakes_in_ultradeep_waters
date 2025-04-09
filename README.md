@@ -1,49 +1,121 @@
-# Codes_Ocean_drones_monitoring_earthquakes_in_ultradeep_waters
+# 🌊 Ocean drones enabling long-term earthquake monitoring in target zones 🌊
 
-This project is dedicated to provide a Python framework for analysing data from ocean gliders based on [ObsPy](https://github.com/obspy/obspy/wiki).
+This repository contains reproducible material for the study **"Ocean drones enabling long-term earthquake monitoring in target zones"** by *Diogo L. de Oliveira Coelho¹, Marcelo B. de Bianchi², Ítalo C.B.S. Maurício¹, Carlos A. M. Chaves², Sergio L. Fontes¹, Ricardo G. Borges³* submitted to *Scientific Reports*. 
 
-Version
----------
-v0.01
+1. Geophysics Department, Observatório Nacional, Rio de Janeiro, Brazil
+2. Geophysics Department, Universidade de São Paulo, São Paulo, Brazil
+3. The Leopoldo Américo Miguez de Mello Research, Development and Innovation Center, Rio de Janeiro, Brazil, 
 
-Requirements
-------------
-The code is developped on Debian 12 with Python 3.11.
+## 📦 Required Libraries 📦
 
-In addition to [Python 3.11](https://www.python.org/downloads/release/python-370/), you need
-to install the following packages:
+The following libraries are used in this project:
 
-- [numpy](http://www.numpy.org/)
-- [matplotlib](http://matplotlib.org/)
-- [ObsPy](https://github.com/obspy/obspy/wiki)
-- [os](https://docs.python.org/3/library/os.html)
-- [multiprocessing](https://docs.python.org/3/library/multiprocessing.html)
+### Core Seismology & Signal Processing
+- [Obspy](https://github.com/obspy/obspy): Fundamental package for seismological data processing and analysis
+- [Scipy](https://scipy.org/): Scientific computing tools (signal processing module used)
+- [scikit-learn](https://scikit-learn.org/): Machine learning tools (preprocessing module used)
 
-*I suggest to use the [Anaconda Cloud](https://anaconda.org/) to install your packages.
+### Data Handling
+- [NumPy](https://numpy.org/): Fundamental package for numerical computing
+- [Pandas](https://pandas.pydata.org/): Data analysis and manipulation
+- [subprocess](https://docs.python.org/3/library/subprocess.html): For running external commands (CAKE)
+- [os](https://docs.python.org/3/library/os.html): Operating system interfaces
+- [glob](https://docs.python.org/3/library/glob.html): Unix-style pathname pattern expansion
+- [datetime](https://docs.python.org/3/library/datetime.html): Date/time handling
 
+### Parallel Processing
+- [multiprocessing](https://docs.python.org/3/library/multiprocessing.html): Parallel processing capabilities
 
-Brief explanation about the main code:
----------------------------------------
+### Progress & Utility
+- [tqdm](https://github.com/tqdm/tqdm): Progress bars for loops
 
-**First of all, you must to get information of the dataset completude**
-
-
-How to update
--------------
-The code is still experimental so you should regularly check for (and pull) updates.
-
-ToDo list
--------------
-- Create the main code.
-
-References
-----------
-
-- M. Beyreuther, R. Barsch, L. Krischer, T. Megies, Y. Behr and J. Wassermann (2010).
-ObsPy: A Python Toolbox for Seismology.
-*SRL*, **81(3)**, 530-533. DOI: 10.1785/gssrl.81.3.530
+### Visualization & Mapping
+- [Matplotlib](https://matplotlib.org/): Comprehensive plotting library
+- [Cartopy](https://scitools.org.uk/cartopy/): Geographic mapping and projections
+- [Shapely](https://shapely.readthedocs.io/): Geometric objects and operations
 
 
-- L. Krischer, T. Megies, R. Barsch, M. Beyreuther, T. Lecocq, C. Caudron, J. Wassermann (2015).
-ObsPy: a bridge for seismology into the scientific Python ecosystem.
-*Computational Science & Discovery*, **8(1)**, 014003. DOI: 10.1088/1749-4699/8/1/014003
+## 🖱️ Installation 🖱️
+
+To use the provided notebooks, install the required dependencies:
+
+```bash
+# Core packages
+pip install obspy scipy scikit-learn numpy pandas tqdm
+
+# Visualization
+pip install matplotlib cartopy shapely
+
+# Optional extras
+pip install pyproj multiprocess
+```
+
+## 🏗️ Repository structure 🏗️
+
+```plaintext
+📦 root
+├── 📄 README.md                                                 # Project overview and instructions  
+├── 📑 Event_classification.ipynb                                # Jupyter notebook for event classification  
+├── 📂 Sample/                                                   # Folder with reproducible material  
+│   ├── 📂 CSV/                                                  # Metadata and input data  
+│   │   └── 📄 metadados_glider.csv                              # Glider metadata  
+│   ├── 📂 EARTH_MODEL_AREA/                                     # Velocity model for travel-time calculations  
+│   │   └── 📄 model_ak135_SOFAR.nd                              # Modified ak135 model for SOFAR channel  
+│   ├── 📂 EVENTS/                                               # Event origin and focal information  
+│   │   └── 📄 CMTSOLUTIONS.xml                                  # CMT solutions for teleseismic events  
+│   ├── 📂 MSSED_DATA/                                           # Raw waveform data from gliders  
+│   │   └── 📂 2017/  
+│   │       └── 📂 105/  
+│   │           └── 📂 2017.105.08.19.48.300/  
+│   │               └── 📄 GL.G170B.2017.105.08.19.48.300.H      # Waveform with Event ID: 201704150819A  
+│   ├── 📂 OUTPUT/                                               # Results and figures  
+│   │   ├── 📂 EVENTS_GLIDERS/                                   # Classified events related to gliders  
+│   │   └── 📂 FIGURAS/                                          # Generated figures  
+│   │       ├── 📂 EVENT_MSEED_TELESEISMIC_DETECTION/            # All detected teleseismic events  
+│   │       └── 📂 EVENT_MSEED_TELESEISMIC_DETECTION_SELECTED/   # Selected subset of events  
+```
+
+
+## 📑 Notebooks 📑
+
+Automatically detects and classifies the M6.0 earthquake at the Chile-Argentina border (Event ID: 201704150819A) by processing seismic data from the sample folder.
+
+The following notebook is provided:
+
+- 📔 ``Regional_Teleseismic_event_classification.ipynb``
+
+## ⌨️ Usage ⌨️
+
+1. Clone this repository:
+   ```bash
+   git clone <repository_url>
+   cd Codes_Ocean_drones_monitoring_earthquakes_in_ultradeep_waters
+   ```
+2. Open the Jupyter Notebook environment:
+   ```bash
+   jupyter-lab
+   ```
+3. Run the following notebooks to reproduce the results:
+   - `Regional_Teleseismic_event_classification.ipynb`
+
+## 🧮 Algorithm 🧮
+
+#### **Automated event detection flowchart**
+
+Algorithm to detect global earthquakes (epicentral distance > 100 km) automatically, and the database utilized (bottom left).
+
+<img src="flowchart.png" width="800" align="center">
+
+
+
+## 🔖 Disclaimer 🔖  
+
+All experiments were conducted on two different setups running **Debian GNU/Linux 12 (Bookworm)**:  
+
+- 💻 **AMD Ryzen 7 5700U** with **10 GB RAM**  
+- 💻 **Intel® Core™ Ultra 9** with **64 GB RAM**  
+
+📣 **Multiprocessing is implemented.**  
+
+---
+For further details, refer to the paper associated with this repository.
