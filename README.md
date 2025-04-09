@@ -82,7 +82,7 @@ Automatically detects and classifies the M6.0 earthquake at the Chile-Argentina 
 
 The following notebook is provided:
 
-- 📔 ``Regional_Teleseismic_event_classification.ipynb``
+- 📔 ``Event_classification.ipynb``
 
 ## ⌨️ Usage ⌨️
 
@@ -96,7 +96,7 @@ The following notebook is provided:
    jupyter-lab
    ```
 3. Run the following notebooks to reproduce the results:
-   - `Regional_Teleseismic_event_classification.ipynb`
+   - `Event_classification.ipynb`
 
 ## 🧮 Algorithm 🧮
 
